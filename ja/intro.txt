@@ -26,18 +26,18 @@
 
 どのようにシステムを準備すれば彼らがお互いのセーブを容易に入手できるでしょうか？そして新しいものをアップロードできるでしょうか？
 
-In the old days, every project used centralized version control. A server somewhere held all the saved games. Nobody else did. Every player kept at most a few saved games on their machine. When a player wanted to make progress, they'd download the latest save from the main server, play a while, save and upload back to the server for everyone else to use.
+かつては、どのプロジェクトも集中型バージョン管理を利用していました。どこかにあるサーバーがセーブされたゲームのすべて保持していました。その他の場所にはありません。全プレーヤーはそれぞれのマシン上に多くて数個のセーブされたゲームを保持していました。プレイヤーが進行させたい場合には、メインサーバーから最新のセーブをダウンロードし、しばらくプレイして、他の人が利用できるように歩人しサーバーにアップロードし直します。
 
 
-What if a player wanted to get an older saved game for some reason? Maybe the current saved game is in an unwinnable state because somebody forgot to pick up an object back in level three, and they want to find the latest saved game where the game can still be completed. Or maybe they want to compare two older saved games to see how much work a particular player did.
+何らかの理由でプレイヤーが、より昔にセーブされたゲームを入手したい場合どうでしょうか？もしかすると現在のセーブされたゲームは、誰かがレベル3に戻ってオブジェクトを拾うのを忘れたために、勝つことができない状態にあり、まだゲームがコンプリート出来うる状態の保存されたゲームを見つけたくなるかもしれません。あるいは過去に保存された2つのゲームを比較して特定のプレイヤーがどれほどの働きをしたかを見たいかもしれません。
 
-There could be many reasons to want to see an older revision, but the outcome is the same. They have to ask the central server for that old saved game. The more saved games they want, the more they need to communicate.
+古い修正を見たくなる理由はたくさんあるかもしれませんが、その結果は同じです。人々はその保存された古いゲームを中央サーバーに尋ねる必要があります。より多くの保存されたゲームを欲しているならば、より多くのやりとりが必要になります。
 
-The new generation of version control systems, of which Git is a member, are known as distributed systems, and can be thought of as a generalization of centralized systems. When players download from the main server they get every saved game, not just the latest one. It's as if they're mirroring the central server.
+Gitもそのメンバーでもある新しい世代のバージョン管理システムは、分散型システムとして知られており、集中型システムの一般化として考えることができます。
 
-This initial cloning operation can be expensive, especially if there's a long history, but it pays off in the long run. One immediate benefit is that when an old save is desired for any reason, communication with the central server is unnecessary.
+特に長い履歴がある場合、初回の複製操作に多くのコストかかるかもしれませんが、長期運用することで効果をもたらすことができます。1つの直接的な利益は、何らかの理由で古いセーブが要求されている場合に、中央サーバーとのやりとりが不要だということです。
 
-=== A Silly Superstition ===
+=== 愚かな迷信 ===
 
 A popular misconception is that distributed systems are ill-suited for projects requiring an official central repository. Nothing could be further from the truth. Photographing someone does not cause their soul to be stolen. Similarly, cloning the master repository does not diminish its importance.
 
