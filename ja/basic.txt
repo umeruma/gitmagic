@@ -36,9 +36,9 @@ Gitコマンドの海に飛び込むよりもまず、初歩的な例を使っ�
 
  $ git mv bug.c feature.c
 
-=== 高度な Undo/Redo ===
+=== 高度な 取り消し/やり直し ===
 
-時々、あなたはそのすべてが間違っていたたことを理由に過去のある地点での変更をすべて忘れ、単に戻りたくなるでしょう。その時は:
+ある時、あなたはそのすべてが間違っていたたことを理由に過去のある地点での変更をすべて忘れ、単に戻りたくなりました。その時は:
 
  $ git log
 
@@ -58,25 +58,23 @@ Date:   Thu Jan 1 00:00:00 1970 +0000
     Initial commit.
 ----------------------------------
 
-The first few characters of the hash are enough to specify the commit;
-alternatively, copy and paste the entire hash. Type:
+ハッシュ値の最初の数文字で十分コミットを特定できます。またはハッシュ値すべてをコピーし貼り付けます。次のようにタイプすると:
 
  $ git reset --hard 766f
 
-to restore the state to a given commit and erase all newer commits from the record permanently.
+与えたコミットの状態に復元され、それよりも新しいコミットは記録から永続的に破棄されます。
 
-Other times you want to hop to an old state briefly. In this case, type:
+また別の時に、あなたは古い状態に少しの間ぽんと戻りたくなりました。この場合、次のようにタイプします:
 
  $ git checkout 82f5
 
-This takes you back in time, while preserving newer commits. However, like time travel in a science-fiction movie, if you now edit and commit, you will be in an alternate reality, because your actions are different to what they were the first time around.
+これはあなたの時間を戻しますが、新しいコミットは保持されたままです。しかしながら、サイエンスフィクション映画の中のタイムトラベルのように、もしそこで変更しコミットした場合、あなたはもう一つの現実の中にいることになります、なぜならあなたの行動が最初に行ったものとは異なるからです。
 
-This alternate reality is called a 'branch', and <<branch,we'll have more to say about this later>>. For now, just remember that
+このもう一つの現実は’branch（ブランチ）’と呼ばれ、<<branch,私たちは後ほどこれについて詳しく説明します>>。今は、ただ次のことを覚えてください
 
  $ git checkout master
 
-will take you back to the present. Also, to stop Git complaining, always
-commit or reset your changes before running checkout.
+があなたを現代に連れ戻します。また、Gitに不満を言わないようにするため、チェックアウトを実行する前に常にあなたの変更をコミットまたはリセットします。
 
 To take the computer game analogy again:
 
