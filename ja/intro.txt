@@ -28,7 +28,6 @@
 
 かつては、どのプロジェクトも集中型バージョン管理を利用していました。どこかにあるサーバーがセーブされたゲームのすべて保持していました。その他の場所にはありません。全プレーヤーはそれぞれのマシン上に多くて数個のセーブされたゲームを保持していました。プレイヤーが進行させたい場合には、メインサーバーから最新のセーブをダウンロードし、しばらくプレイして、他の人が利用できるように歩人しサーバーにアップロードし直します。
 
-
 何らかの理由でプレイヤーが、より昔にセーブされたゲームを入手したい場合どうでしょうか？もしかすると現在のセーブされたゲームは、誰かがレベル3に戻ってオブジェクトを拾うのを忘れたために、勝つことができない状態にあり、まだゲームがコンプリート出来うる状態の保存されたゲームを見つけたくなるかもしれません。あるいは過去に保存された2つのゲームを比較して特定のプレイヤーがどれほどの働きをしたかを見たいかもしれません。
 
 古い修正を見たくなる理由はたくさんあるかもしれませんが、その結果は同じです。人々はその保存された古いゲームを中央サーバーに尋ねる必要があります。より多くの保存されたゲームを欲しているならば、より多くのやりとりが必要になります。
@@ -39,22 +38,22 @@ Gitもそのメンバーでもある新しい世代のバージョン管理シ�
 
 === 愚かな迷信 ===
 
-A popular misconception is that distributed systems are ill-suited for projects requiring an official central repository. Nothing could be further from the truth. Photographing someone does not cause their soul to be stolen. Similarly, cloning the master repository does not diminish its importance.
+よくある誤解なのが、分散型システムは公式の中央リポジトリを必要とするプロジェクトには不適切であるというものです。事実からかけ離れたものがあってはなりません。誰かの写真撮影が、その人たちの魂を奪うことはありません。同じように、マスターリポジトリを複製してもその重要性が損なわれることはありません。
 
-A good first approximation is that anything a centralized version control system can do, a well-designed distributed system can do better. Network resources are simply costlier than local resources. While we shall later see there are drawbacks to a distributed approach, one is less likely to make erroneous comparisons with this rule of thumb.
+最初の良い近似として、集中型バージョンコントロールシステムができることは何でも、うまく設計された分散型システムはより上手くこなすことができます。ネットワークリソースは単純にローカルリソースよりも高くつきます。後ほど私たちは分散型の手法に欠点があることを知りますが、この経験則と誤った対比をしてしまう可能性は低くなります。
 
-A small project may only need a fraction of the features offered by such a
-system, but using systems that scale poorly for tiny projects is like using
-Roman numerals for calculations involving small numbers.
+小さいプロジェクトはそのおようなシステムが提供する機能のいちのごく一部しか必要としないかもしれませんが、非常に小さいプロジェクトのためにスケールしないシステムを使うのは、ローマ数字を少数を含む計算に利用するようなものです。
 
-Moreover, your project may grow beyond your original expectations. Using Git from the outset is like carrying a Swiss army knife even though you mostly use it to open bottles. On the day you desperately need a screwdriver you'll be glad you have more than a plain bottle-opener.
+その上、あなたのプロジェクトは当初の予定よりも成長するかもしれません。最初からGitを利用するのは、主にボトルを開けるために使用する場合でもスイスアーミーナイフを携帯するのと同じです。どうしてもスクリュードライバーが必要になったある日、あなたは単なる栓抜き以上のものを持っていたことに喜ぶでしょう。
 
-=== Merge Conflicts ===
+=== 競合のマージ ===
 
-For this topic, our computer game analogy becomes too thinly stretched. Instead, let us again consider editing a document.
+このトピックには、我々のコンピューターゲームの比喩はあまりにも薄くなりすぎます。それよりも、もう一度書類を編集することを考えてみましょう。
 
-Suppose Alice inserts a line at the beginning of a file, and Bob appends one at the end of his copy. They both upload their changes. Most systems will automatically deduce a reasonable course of action: accept and merge their changes, so both Alice's and Bob's edits are applied.
+このトピックには、我々のコンピューターゲームの比喩はあまりにも薄くなりすぎます。それよりも、もう一度書類の編集作業を考えてみましょう。
 
-Now suppose both Alice and Bob have made distinct edits to the same line. Then it is impossible to proceed without human intervention. The second person to upload is informed of a _merge conflict_, and must choose one edit over another, or revise the line entirely.
+アリスがファイルの冒頭に一行挿入し、ボブが複製されたファイルの終わりに追加しているところを想像してください。彼女らはどちらもその変更をアップロードします。ほとんどのシステムは自動的に合理的な行動手順を推測します。それぞれの変更を許可もしくはマージするので、アリスとボブの変更はどちらも適用されます。
 
-More complex situations can arise. Version control systems handle the simpler cases themselves, and leave the difficult cases for humans. Usually their behaviour is configurable.
+今度はアリスとボブの両方が同じ行に異なる変更を加えた場合を考えてみてください。すると人間の介入なしには進めることができなくなります。アップロードを行う2人目に_マージの競合_が知らされ、片方の変更を選択するか、その行を丸ごと修正し直さなければなりません。
+
+より複雑な状況も発生しうるでしょう。バージョン管理システムは単純な事柄であればそれ自身で対処できますが、難しい事柄は人間に委ねています。通常、その動作は設定が可能になっています。
