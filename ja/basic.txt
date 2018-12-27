@@ -76,61 +76,58 @@ Date:   Thu Jan 1 00:00:00 1970 +0000
 
 があなたを現代に連れ戻します。また、Gitに不満を言わないようにするため、チェックアウトを実行する前に常にあなたの変更をコミットまたはリセットします。
 
-To take the computer game analogy again:
+再びコンピューターゲームを比喩にとると:
 
-- *`git reset --hard`*: load an old save and delete all saved games newer than the one just loaded.
+- *`git reset --hard`*: 古いセーブをロードし、ロードされたものよりも新しいすべてのセーブされたゲームを削除します
 
-- *`git checkout`*: load an old game, but if you play on, the game state will deviate from the newer saves you made the first time around. Any saved games you make now will end up in a separate branch representing the alternate reality you have entered. <<branch,We deal with this later>>.
+- *`git checkout`*: 古いゲームをロードしますが、遊んでいると、ゲームの状態は最初に作られたあなたの新しいセーブから逸脱するでしょう。そこでセーブされたゲームはあなたが侵入したもう一つの現実にあたる別のブランチに行き着くでしょう。<<branch,これについては後ほど扱います。>>
 
-You can choose only to restore particular files and subdirectories by appending them after the command:
+特定のファイルやサブディレクトリーをコマンドの後に付け加えることで、それらだけの復元するよう選択できます:
 
  $ git checkout 82f5 some.file another.file
 
-Take care, as this form of *checkout* can silently overwrite files. To
-prevent accidents, commit before running any checkout command, especially when
-first learning Git. In general, whenever you feel unsure about any operation, Git command or not, first run *git commit -a*.
+気をつけるのは、この形式の*checkout*は静かにファイルを上書きする可能性があるということです。アクシデントを防ぐために、どんなcheckoutコマンドを実行する前にはコミットをしましょう、初めてのGitの学習の際には尚更です。一般的に、Gitコマンドであってもなくても、操作に不安を感じる場合はどんな時でも、最初に*git commit -a*を実行してください。
 
-Don't like cutting and pasting hashes? Then use:
+ハッシュ値をカットアンドペーストするのが嫌いですか？それならこれを使って:
 
  $ git checkout :/"My first b"
 
-to jump to the commit that starts with a given message.
-You can also ask for the 5th-last saved state:
+与えられたメッセージで始まるコミットにジャンプします。
+また最後から5番目に保存された状態を訪ねることも可能です:
 
  $ git checkout master~5
 
-=== Reverting ===
+=== 復帰する ===
 
-In a court of law, events can be stricken from the record. Likewise, you can pick specific commits to undo.
+法廷では、記録から事件が発生する場合があります。同様に、特定のコミットを選択して元に戻すことができます。
 
  $ git commit -a
  $ git revert 1b6d
 
-will undo just the commit with the given hash. The revert is recorded as a new
-commit, which you can confirm by running *git log*.
+これは与えられたハッシュ値のコミットだけを元に戻します。この復帰は新しいコミットとして記録され、*git log*を実行することで確認することができます。
 
-=== Changelog Generation ===
+=== 変更ログの生成 ===
 
-Some projects require a http://en.wikipedia.org/wiki/Changelog[changelog].
-Generate one by typing:
+いくつかのプロジェクトはhttp://en.wikipedia.org/wiki/Changelog[変更ログ]を要求します。
+次のようにタイピングすることで生成します:
 
  $ git log > ChangeLog
 
-=== Downloading Files ===
+=== ファイルのダウンロード ===
 
-Get a copy of a project managed with Git by typing:
+Gitで管理されているプロジェクトのコピーを取得するには次のようにタイプします:
 
  $ git clone git://server/path/to/files
 
-For example, to get all the files I used to create this site:
+たとえば、このサイトの生成に私が使用したファイル全てを取得するには:
 
  $ git clone git://git.or.cz/gitmagic.git
 
-We'll have much to say about the *clone* command soon.
+*clone*コマンドについてじきに話すことがたくさんあります。
 
-=== The Bleeding Edge ===
+=== 最前線 ===
 
-If you've already downloaded a copy of a project using *git clone*, you can upgrade to the latest version with:
+もしすでに*git clone*を使ってプロジェクトのコピーをダウンロードしていたなら、これによって最新バージョンへアップグレードできます:
 
  $ git pull
 
